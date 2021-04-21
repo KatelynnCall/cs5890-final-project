@@ -31,7 +31,7 @@ def draw_figure(canvas, figure):
     return figure_canvas_agg
 
 def visGui(name):
-    sg.theme('DarkAmber')  # Add a touch of color
+    sg.theme('GreenMono')  # Add a touch of color
     layout = [[sg.Text('Choose your datasets to compare')],
               [sg.Combo(['Dataset 1','Soil Temp'], default_value='Dataset 1'), sg.Combo(['High Vegitation', 'Dataset 4', 'Dataset 5'], default_value='Dataset 4'),
               sg.Button('Compare')],
