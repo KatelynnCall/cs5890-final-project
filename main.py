@@ -56,8 +56,9 @@ def visGui(name):
 
     layout = [[sg.Text('Choose your datasets to compare')],
               [sg.Combo(['Soil Temperature', 'Soil Water Level', 'Vegetation'], default_value='Soil Temperature', key='-COMP1-'),
-              sg.Combo(['1990', '1995', '2000', '2005', '2010', '2015', '2020'], default_value='1990', key='-DATE1-'),
-               sg.Combo(['Soil Temperature', 'Soil Water Level', 'Vegetation'], default_value='Soil Temperature', key='-COMP2-'),
+              sg.Combo(['1990', '1995', '2000', '2005', '2010', '2015', '2020'], default_value='1990', key='-DATE1-')
+               ],
+              [sg.Combo(['Soil Temperature', 'Soil Water Level', 'Vegetation'], default_value='Soil Temperature', key='-COMP2-'),
                sg.Combo(['1990', '1995', '2000', '2005', '2010', '2015', '2020'], default_value='1990', key='-DATE2-'),
                 sg.Button('Compare')],
               [sg.Image(key="-IMAGE-")],
@@ -70,7 +71,7 @@ def visGui(name):
     compare2Layout = [[sg.Canvas(key='-CANVAS2-', size=(300, 300), background_color='blue')]]
 
     # sg.Window(title="Visualization", layout=[[sg.Combo(['Dataset 1','Soil Temp'],default_value='Dataset 1'), sg.Combo(['High Vegitation', 'Dataset 4', 'Dataset 5']),sg.Button('ok')]], margins=(300, 150)).read()
-    window = sg.Window('Visualization Comparer', layout, size=(1000, 1000))
+    window = sg.Window('Visualization Comparer', layout, size=(600, 600))
 
     files = {
         'Soil Temp And Vegetation': 'images/SoilTempAndVegCombined.jpg',
