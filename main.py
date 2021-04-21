@@ -7,14 +7,14 @@ from PIL import Image
 def visGui(name):
     sg.theme('DarkAmber')  # Add a touch of color
     layout = [[sg.Text('Choose your datasets to compare')],
-              [sg.Combo(['Dataset 1','Soil Temp'], default_value='Dataset 1')], [sg.Combo(['High Vegitation', 'Dataset 4', 'Dataset 5'], default_value='Dataset 4')],
-              [sg.Button('Compare')],
+              [sg.Combo(['Dataset 1','Soil Temp'], default_value='Dataset 1'), sg.Combo(['High Vegitation', 'Dataset 4', 'Dataset 5'], default_value='Dataset 4'),
+              sg.Button('Compare')],
               [sg.Image(key="-IMAGE-")],
-              [sg.Combo(['Soil Temp And Vegetation', 'Soil Temp vs Vegetation'], default_value='Soil Temp And Vegetation', key="-FILE-"), sg.Button('Load Image')],
+              [sg.Text('Select pre-rendered picture to view:'), sg.Combo(['Soil Temp And Vegetation', 'Soil Temp vs Vegetation'], default_value='Soil Temp And Vegetation', key="-FILE-"), sg.Button('Load Image')],
               ]
 
     # sg.Window(title="Visualization", layout=[[sg.Combo(['Dataset 1','Soil Temp'],default_value='Dataset 1'), sg.Combo(['High Vegitation', 'Dataset 4', 'Dataset 5']),sg.Button('ok')]], margins=(300, 150)).read()
-    window = sg.Window('Visualization Comparer', layout, size=(500,500))
+    window = sg.Window('Visualization Comparer', layout, size=(600,500))
 
     while True:
         files = {
@@ -29,11 +29,12 @@ def visGui(name):
             filename = files[values["-FILE-"]]
             if os.path.exists(filename):
                 image = Image.open(files[values["-FILE-"]])
-                image.thumbnail((400, 400))
+                image.thumbnail((600, 600))
                 bio = io.BytesIO()
                 image.save(bio, format="PNG")
                 window["-IMAGE-"].update(data=bio.getvalue())
-        print('You entered', values[0], 'and', values[1])
+        if event == "Compare":
+            print('You entered', values[0], 'and', values[1])
 
     window.close()
 
