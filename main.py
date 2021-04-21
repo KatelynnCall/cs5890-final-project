@@ -2,7 +2,33 @@ import io
 import os
 import PySimpleGUI as sg
 from PIL import Image
+import xarray as xr
+import matplotlib
+import matplotlib.pyplot as plt
+import scipy
+import cartopy.crs as ccrs
+import cartopy
+import numpy as np
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+matplotlib.use("TkAgg")
 
+LOGAN_UTAH_LAT = 41
+LOGAN_UTAH_LONG = -111
+
+def plotMap(data, title):
+    fig = plt.figure(figsize=(10,10))
+    ax = plt.axes(projection=ccrs.Robinson())
+    ax.coastlines(resolution='10m')
+    ax.gridlines()
+    plt.title(title)
+    plot = data.plot(cmap=plt.cm.coolwarm, transform=ccrs.PlateCarree(), cbar_kwargs={'shrink':0.6})
+    return plot
+
+def draw_figure(canvas, figure):
+    figure_canvas_agg = FigureCanvasTkAgg(figure, canvas)
+    figure_canvas_agg.draw()
+    figure_canvas_agg.get_tk_widget().pack(side='top', fill='both', expand=1)
+    return figure_canvas_agg
 
 def visGui(name):
     sg.theme('DarkAmber')  # Add a touch of color
@@ -11,10 +37,14 @@ def visGui(name):
               sg.Button('Compare')],
               [sg.Image(key="-IMAGE-")],
               [sg.Text('Select pre-rendered picture to view:'), sg.Combo(['Soil Temp And Vegetation', 'Soil Temp vs Vegetation'], default_value='Soil Temp And Vegetation', key="-FILE-"), sg.Button('Load Image')],
+              [sg.Canvas(key='-CANVAS-')]
               ]
 
     # sg.Window(title="Visualization", layout=[[sg.Combo(['Dataset 1','Soil Temp'],default_value='Dataset 1'), sg.Combo(['High Vegitation', 'Dataset 4', 'Dataset 5']),sg.Button('ok')]], margins=(300, 150)).read()
     window = sg.Window('Visualization Comparer', layout, size=(600,500))
+
+    data = xr.open_dataset('data/download.grib', engine='cfgrib')
+    stl1 = data.stl1
 
     while True:
         files = {
@@ -34,7 +64,9 @@ def visGui(name):
                 image.save(bio, format="PNG")
                 window["-IMAGE-"].update(data=bio.getvalue())
         if event == "Compare":
-            print('You entered', values[0], 'and', values[1])
+            plot = plotMap(stl1[0], 'test')
+            draw_figure(window['-CANVAS-'].TKCanvas, plot.figure)
+        print('You entered', values[0], 'and', values[1])
 
     window.close()
 
