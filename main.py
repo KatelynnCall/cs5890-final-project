@@ -67,8 +67,8 @@ def visGui(name):
                         default_value='Soil Temp And Vegetation', key="-FILE-"), sg.Button('Load Image')],
 
               ]
-    compare1Layout = [[sg.Canvas(key='-CANVAS1-', size=(300, 300), background_color='red')]]
-    compare2Layout = [[sg.Canvas(key='-CANVAS2-', size=(300, 300), background_color='blue')]]
+    compare1Layout = [[sg.Canvas(key='-CANVAS1-', size=(300, 300))]]
+    compare2Layout = [[sg.Canvas(key='-CANVAS2-', size=(300, 300))]]
 
     # sg.Window(title="Visualization", layout=[[sg.Combo(['Dataset 1','Soil Temp'],default_value='Dataset 1'), sg.Combo(['High Vegitation', 'Dataset 4', 'Dataset 5']),sg.Button('ok')]], margins=(300, 150)).read()
     window = sg.Window('Visualization Comparer', layout, size=(600, 600))
