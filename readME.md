@@ -53,6 +53,7 @@ Make sure you install the above before moving on
 conda install -c conda-forge cdsapi
 conda install -c conda-forge cfgrib
 conda install -c conda-forge xarray
+conda install -c conda-forge cartopy
 conda install -c conda-forge PySimpleGUI
 conda install -c conda-forge Matplotlib
 conda install -c conda-forge eccodes
