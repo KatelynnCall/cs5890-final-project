@@ -33,3 +33,24 @@ pip3 install Pillow
 pip3 install cython
 pip3 install cartopy
 ```
+
+Windows/Anaconda instilation(Unstable, not recommended)
+[cartopy](https://scitools.org.uk/cartopy/docs/latest/installing.html)
+
+```
+conda install -c conda-forge GEOS
+conda install -c conda-forge NumPy
+conda install -c conda-forge Cython
+conda install -c conda-forge Shapely
+conda install -c conda-forge pyshp
+conda install -c conda-forge six
+conda install -c conda-forge PROJ
+conda install -c conda-forge pillow
+```
+Make sure you install the above before moving on
+```
+conda install -c conda-forge PySimpleGUI
+conda install -c conda-forge Matplotlib
+conda install -c conda-forge eccodes
+```
+In your conda environment make sure the interpreter has all the above packages in the project
