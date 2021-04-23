@@ -41,6 +41,7 @@ Windows/Anaconda instilation(Unstable, not recommended)
 conda install -c conda-forge GEOS
 conda install -c conda-forge NumPy
 conda install -c conda-forge Cython
+conda install -c conda-forge scipy
 conda install -c conda-forge Shapely
 conda install -c conda-forge pyshp
 conda install -c conda-forge six
@@ -49,6 +50,9 @@ conda install -c conda-forge pillow
 ```
 Make sure you install the above before moving on
 ```
+conda install -c conda-forge cdsapi
+conda install -c conda-forge cfgrib
+conda install -c conda-forge xarray
 conda install -c conda-forge PySimpleGUI
 conda install -c conda-forge Matplotlib
 conda install -c conda-forge eccodes
