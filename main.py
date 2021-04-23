@@ -4,6 +4,7 @@ import PySimpleGUI as sg
 from PIL import Image
 import xarray as xr
 import matplotlib
+matplotlib.get_backend()
 import matplotlib.pyplot as plt
 import scipy
 import cartopy.crs as ccrs
@@ -11,7 +12,6 @@ import cartopy
 import numpy as np
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-matplotlib.use("TkAgg")
 
 LOGAN_UTAH_LAT = 41
 LOGAN_UTAH_LONG = -111

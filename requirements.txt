@@ -1,0 +1,11 @@
+cdsapi
+xarray
+cfgrib
+matplotlib
+scipy
+eccodes
+eccodes-python
+PySimpleGUI
+Pillow
+cython
+cartopy
