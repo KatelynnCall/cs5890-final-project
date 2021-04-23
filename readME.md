@@ -34,7 +34,7 @@ pip3 install cython
 pip3 install cartopy
 ```
 
-Windows/Anaconda instilation(Unstable, not recommended)
+Windows/Anaconda installation(Unstable, not recommended)
 [cartopy](https://scitools.org.uk/cartopy/docs/latest/installing.html)
 
 ```
