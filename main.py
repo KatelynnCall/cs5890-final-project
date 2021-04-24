@@ -64,7 +64,7 @@ def visGui(name):
                 sg.Text('(May take up to 1 minute to render)')],
               [sg.Image(key="-IMAGE-")],
               [sg.Text('Select pre-rendered picture to view:'),
-               sg.Combo(['Soil Temp And Vegetation', 'Soil Temp vs Vegetation'],
+               sg.Combo(['Soil Temp And Vegetation', 'Soil Temp vs Vegetation', 'Vegetation vs Soil Water Level'],
                         default_value='Soil Temp And Vegetation', key="-FILE-"), sg.Button('Load Image')],
 
               ]
@@ -72,11 +72,12 @@ def visGui(name):
     compare2Layout = [[sg.Canvas(key='-CANVAS2-', size=(300, 300))]]
 
     # sg.Window(title="Visualization", layout=[[sg.Combo(['Dataset 1','Soil Temp'],default_value='Dataset 1'), sg.Combo(['High Vegitation', 'Dataset 4', 'Dataset 5']),sg.Button('ok')]], margins=(300, 150)).read()
-    window = sg.Window('Visualization Comparer', layout, size=(600, 600))
+    window = sg.Window('Visualization Comparer', layout, size=(1000, 750))
 
     files = {
         'Soil Temp And Vegetation': 'images/SoilTempAndVegCombined.jpg',
-        'Soil Temp vs Vegetation': 'images/soilTempAndVegitation.jpg'
+        'Soil Temp vs Vegetation': 'images/soilTempAndVegitation.jpg',
+        'Vegetation vs Soil Water Level': 'images/Vegitation_vs_Soil_Water_Bins.png'
     }
 
     while True:
@@ -87,7 +88,7 @@ def visGui(name):
             filename = files[values["-FILE-"]]
             if os.path.exists(filename):
                 image = Image.open(files[values["-FILE-"]])
-                image.thumbnail((600, 600))
+                image.thumbnail((750, 750))
                 bio = io.BytesIO()
                 image.save(bio, format="PNG")
                 window["-IMAGE-"].update(data=bio.getvalue())
