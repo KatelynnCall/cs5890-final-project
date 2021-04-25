@@ -37,7 +37,7 @@ def draw_figure(canvas, figure):
 def visGui(name):
     sg.theme('GreenMono')  # Add a touch of color
     data = xr.open_dataset('data/download.grib', engine='cfgrib')
-
+    print(data)
     dataSets = {
         'Soil Temperature': data.stl1,
         'Soil Water Level': data.swvl1,
@@ -64,7 +64,7 @@ def visGui(name):
                 sg.Text('(May take up to 1 minute to render)')],
               [sg.Image(key="-IMAGE-")],
               [sg.Text('Select pre-rendered picture to view:'),
-               sg.Combo(['Soil Temp And Vegetation', 'Soil Temp vs Vegetation', 'Vegetation vs Soil Water Level'],
+               sg.Combo(['Soil Temp And Vegetation', 'Soil Temp vs Vegetation', 'Vegetation vs Soil Water Level', 'Precipitation vs Vegetation', 'Soil Temp vs Vegetation w/ Histogram', 'Precipitation with Vegetation'],
                         default_value='Soil Temp And Vegetation', key="-FILE-"), sg.Button('Load Image')],
 
               ]
@@ -77,7 +77,10 @@ def visGui(name):
     files = {
         'Soil Temp And Vegetation': 'images/SoilTempAndVegCombined.jpg',
         'Soil Temp vs Vegetation': 'images/soilTempAndVegitation.jpg',
-        'Vegetation vs Soil Water Level': 'images/Vegitation_vs_Soil_Water_Bins.png'
+        'Vegetation vs Soil Water Level': 'images/Vegitation_vs_Soil_Water_Bins.png',
+        'Precipitation vs Vegetation': 'images/PrecipitationAndVegitationHist.png',
+        'Soil Temp vs Vegetation w/ Histogram': 'images/SoilTempAndVegHist.png',
+        'Precipitation with Vegetation': 'images/TotalPrecipitationAndVegitationCombined.png',
     }
 
     while True:
