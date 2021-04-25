@@ -13,9 +13,6 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 matplotlib.use("TkAgg")
 
-LOGAN_UTAH_LAT = 41
-LOGAN_UTAH_LONG = -111
-
 
 def plotMap(data, title):
     fig = plt.figure(figsize=(10, 10))
@@ -71,7 +68,6 @@ def visGui(name):
     compare1Layout = [[sg.Canvas(key='-CANVAS1-', size=(300, 300))]]
     compare2Layout = [[sg.Canvas(key='-CANVAS2-', size=(300, 300))]]
 
-    # sg.Window(title="Visualization", layout=[[sg.Combo(['Dataset 1','Soil Temp'],default_value='Dataset 1'), sg.Combo(['High Vegitation', 'Dataset 4', 'Dataset 5']),sg.Button('ok')]], margins=(300, 150)).read()
     window = sg.Window('Visualization Comparer', layout, size=(1000, 750))
 
     files = {
