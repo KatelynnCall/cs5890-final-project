@@ -11,4 +11,5 @@ For installation please see installation.md.
   * Run this project by running `python main.py` after following the installation instructions
 * The preliminary Jupyter Notebook is located in the `notebook` directory at `final.ipynb`
 * Paraview visualizations are located in the `images` directory
-* The data used for the project is located in the `data` directory
+* The data used for the project can be found [here](https://drive.google.com/file/d/1Owlb33Q7oWtbxcK0Z92pptqnaI7fZamG/view?usp=sharing)
+  * Data should be placed in the `data` directory and be named `download.grib`
